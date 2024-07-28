@@ -1,0 +1,43 @@
+from tkinter import *
+
+
+
+td = Tk()
+
+td.title("Todo List") #Creates a title for the app window
+td.geometry('350x200') #Sets the geometry for the window
+
+
+item = Entry(td, width= 10) #Settings for the text box
+item.grid(column = 1, row = 0)
+todoItem = 2 #Placements for the checkboxes
+checkList = [] #Storage for the checkboxes
+    
+
+def add_to_list(): #Function for adding an item
+    newItem = item.get()
+    global todoItem
+    listItem = Checkbutton(td, text = newItem)
+    listItem.grid(column = 1, row = todoItem)
+    todoItem = todoItem + 1
+    checkList.append(listItem)
+
+
+def delete_all(): #Function for deleting an item
+    for i in checkList:
+        i.grid_forget()
+    
+    
+
+add_item = Button(td, text = "Add item", command = add_to_list) #Add button settings
+add_item.grid(column = 2, row = 0)
+
+
+delete_all = Button(td, text = "Delete all", command = delete_all) #Delete button settings
+delete_all.grid(column = 3, row = 0)
+
+
+
+
+
+td.mainloop()
